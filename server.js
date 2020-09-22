@@ -1,16 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Workout = require("./Workout.js");
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-const url =
-  "mongodb+srv://admin:gkanWD4D5w37kyFu@cluster0.a8ctc.mongodb.net/workout-tracker?retryWrites=true&w=majority";
 
-mongoose.connect(url, {
+mongoose.connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
